@@ -17,24 +17,25 @@ public class AddNewUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_user);
 
-        final EditText firstNameInput =  findViewById(R.id.firstNameInput);
-        final EditText lastNameInput =  findViewById(R.id.lastNameInput);
+        final EditText itemNameInput =  findViewById(R.id.firstNameInput);
+        final EditText amountInput =  findViewById(R.id.lastNameInput);
         Button saveButton =  findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveNewUser(firstNameInput.getText().toString(), lastNameInput.getText().toString());
+
+                saveNewUser(itemNameInput.getText().toString(), Integer.parseInt(amountInput.getText().toString()));
             }
         });
     }
 
-    private void saveNewUser(String firstName, String lastName) {
+    private void saveNewUser(String itemName, int amount) {
         AppDatabase db  = AppDatabase.getDbInstance(this.getApplicationContext());
 
-        User user = new User();
-        user.firstName = firstName;
-        user.lastName = lastName;
-        db.userDao().insertUser(user);
+        User item = new User();
+        item.itemName = itemName;
+        item.amount = amount;
+        db.userDao().insertUser(item);
 
         finish();
 
