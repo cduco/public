@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.roomdbinjava.db.AppDatabase;
 import com.android.roomdbinjava.db.User;
@@ -49,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadUserList() {
         AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
-        List<User> userList =db.userDao().getAllUsers();
+        List<User> userList =db.userDao().getAllItems();
         userListAdapter.setUserList(userList);
+
     }
 
     @Override

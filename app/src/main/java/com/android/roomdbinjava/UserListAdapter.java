@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +24,9 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+        //Toast.makeText(context.getApplicationContext(), fnameList.get(2), Toast.LENGTH_LONG).show();
         notifyDataSetChanged();
+
     }
 
     @NonNull
@@ -36,8 +39,9 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull UserListAdapter.MyViewHolder holder, int position) {
-        holder.tvFirstName.setText(this.userList.get(position).firstName);
-        holder.tvLastName.setText(this.userList.get(position).lastName);
+        holder.tvFirstName.setText(this.userList.get(position).itemName);
+        Integer cat = this.userList.get(position).amount;
+        holder.tvLastName.setText(cat.toString());
     }
 
     @Override

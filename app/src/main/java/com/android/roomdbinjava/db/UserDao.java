@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserDao {
 
     @Query("SELECT * FROM user")
-    List<User> getAllUsers();
+    List<User> getAllItems();
 
     @Insert
     void insertUser(User... users);
